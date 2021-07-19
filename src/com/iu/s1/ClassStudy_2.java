@@ -67,30 +67,33 @@ public class ClassStudy_2 {
 			case 2:
 				System.out.print("번호를 입력해 주세요 : ");
 				int number = sc.nextInt();
+				boolean flag2 = false;
 				for(i =0; i<students.length; i++) {
-				if(number == students[i].num) {
-					System.out.println("이름\t번호\t국어\t영어\t수학\t총점\t평균");
-					System.out.println("=======================================================");
-					System.out.print(students[i].name+"\t");
-					System.out.print(students[i].num+"\t");
-					System.out.print(students[i].kor+"\t");
-					System.out.print(students[i].eng+"\t");
-					System.out.print(students[i].math+"\t");
-					System.out.print(students[i].total+"\t");
-					System.out.println(students[i].avg);
-					System.out.println("----------------------------------------------------");
-				}else {
-					System.out.println("없는 번호 입니다. 다시 입력해주세요.");
-					break;
-				}
+					if(number == students[i].num) {
+						System.out.println("이름\t번호\t국어\t영어\t수학\t총점\t평균");
+						System.out.println("=======================================================");
+						System.out.print(students[i].name+"\t");
+						System.out.print(students[i].num+"\t");
+						System.out.print(students[i].kor+"\t");
+						System.out.print(students[i].eng+"\t");
+						System.out.print(students[i].math+"\t");
+						System.out.print(students[i].total+"\t");
+						System.out.println(students[i].avg);
+						System.out.println("----------------------------------------------------");
+						flag2=true;
+					}else {
+						continue;
+					}
+				}		
+				if(flag2 == false) {
+					System.out.println("없는 번호 입니다. 다시 입력해 주세요.");
 				}
 				break;
 				
 			case 3:
 				System.out.println("학생 정보를 추가해 주세요");
-				Student [] students2 = new Student[students.length+1];
-				for(i=0; i<students2.length; i++) {
-					student = new Student();
+				
+					{student = new Student();
 					
 					System.out.println("이름 : ");
 					student.name = sc.next();
@@ -109,22 +112,59 @@ public class ClassStudy_2 {
 					
 					student.total = student.kor + student.eng + student.math;
 					
-					student.avg = student.total/(double)3;
+					student.avg = student.total/(double)3;	}		
 					
-					students2[i] = student;
-					
+					Student [] students2 = new Student[students.length+1];
+				
 					for(i=0; i<students.length; i++) {
 						students2[i]=students[i];
-						}				
+						}	
+					
+					students2[students.length] = student;
+
 					students = students2;
+				
 					break;
+					
+			case 4:
+				Student [] students3 = new Student[students.length];
+				students3=students;
+				
+				for(int j=0; j<students3.length-1;j++) {
+					for(i=j+1; i<students3.length; i++) {
+						if(students3[j].avg < students3[i].avg) {
+							double tmp = students3[i].avg;
+							students3[i].avg = students3[j].avg;
+							students[j].avg = tmp;
+						}
+					}
+				}
+					System.out.println("이름\t번호\t국어\t영어\t수학\t총점\t평균");
+					System.out.println("=======================================================");
+					for(i=0; i<students3.length; i++) {				
+						System.out.print(students3[i].name+"\t");
+						System.out.print(students3[i].num+"\t");
+						System.out.print(students3[i].kor+"\t");
+						System.out.print(students3[i].eng+"\t");
+						System.out.print(students3[i].math+"\t");
+						System.out.print(students3[i].total+"\t");
+						System.out.println(students3[i].avg);
+						System.out.println("-----------------------------------------");
+					}
+					
+				break;
+			default :
+				System.out.println("프로그램을 종료시키겠습니다");
+				flag=false;
+				
 				}
 			}
+		System.out.println("----Study2 finish----");
 		}
 		
 		
 		
-		
-		System.out.println("----Study finish----");		
+
 	}
-}
+
+
