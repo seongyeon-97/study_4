@@ -149,7 +149,7 @@ public class ClassStudy_2 {
 						System.out.print(students3[i].math+"\t");
 						System.out.print(students3[i].total+"\t");
 						System.out.println(students3[i].avg);
-						System.out.println("-----------------------------------------");
+						System.out.println("-------------------------------------------------------");
 					}
 					
 				break;
