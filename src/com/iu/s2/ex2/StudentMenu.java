@@ -51,13 +51,18 @@ public class StudentMenu {
 				
 				break;
 			case 3:
-				Student st = input.makeStudent();
-				input.addArray();
 				
+				Student st = input.makeStudent();
+				Student [] ss = input.addArray(students);
+				ss[students.length] = st;
+				students = ss;
 				break;
+				
 			case 4:
-				System.out.println("성적순으로 출력");
-				break;
+				Student [] st3 = input.sortArray(students);
+				view.viewAll(st3);
+ 				break;
+ 				
 			default :
 				System.out.println("프로그램 종료");
 				flag = false;
