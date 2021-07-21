@@ -42,20 +42,5 @@ public class StudentInput {
 		
 	}
 	
-	public Student[] sortArray(Student [] students) {
-		Student [] students3 = new Student[students.length];
-		students3=students;
-		for(int j=0; j<students3.length-1;j++) {
-			for(int i=j+1; i<students3.length; i++) {
-				if(students3[j].avg < students3[i].avg) {
-					Student [] tmp = new Student[students.length];					
-					tmp = students3[i];
-					students3[i] = students3[j];
-					students[j] = tmp;
-				}
-			}
-		}
-		return students3;
-		
-	}
+	
 }

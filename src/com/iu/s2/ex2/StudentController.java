@@ -2,13 +2,14 @@ package com.iu.s2.ex2;
 
 import java.util.Scanner;
 
-public class StudentMenu {
+public class StudentController {
 	//메서드 선언
 	//메서드명은 start
 	public void start() {
 		
 		StudentView view = new StudentView();
 		StudentInput input = new StudentInput();
+		StudentSort so = new StudentSort();
 		
 		Scanner sc = new Scanner(System.in);
 		
@@ -53,14 +54,18 @@ public class StudentMenu {
 			case 3:
 				
 				Student st = input.makeStudent();
-				Student [] ss = input.addArray(students);
-				ss[students.length] = st;
-				students = ss;
+				//Student [] ss = input.addArray(students);
+				//ss[students.length] = st;
+				//students = ss;
+				students = input.addArray(students);
+				students[students.length-1] = st;
+				
 				break;
 				
 			case 4:
-				Student [] st3 = input.sortArray(students);
-				view.viewAll(st3);
+				System.out.println("성적순으로 출력");
+				Student [] sort = so.sortByAge(students);
+				view.viewAll(sort);
  				break;
  				
 			default :
